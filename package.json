@@ -1,0 +1,8 @@
+{
+  "name": "de-fend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Rolfchen/de-fend.git",
+  "author": "Rolf Chen <rolf+next@rolfchen.com>",
+  "license": "MIT"
+}
