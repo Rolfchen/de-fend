@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
-import { Avatar, Menu, MenuItem } from '@mui/material';
+import { Avatar, Menu } from '@mui/material';
 import { useState } from 'react';
-import { signOutUser } from '@/utils';
-import { useUserState } from '@/context/UserContext';
+import { useUserState } from '../../context/UserContext';
 import { useRouter } from 'next/router';
 
-const NavBarContainer = styled.nav`
+const DashboardNavBarContainer = styled.nav`
   display: grid;
   position: fixed;
   width: 100%;
@@ -33,13 +32,13 @@ const ProfileContainer = styled.div`
   }
 `;
 
-export interface NavBarProps {
+export interface DashboardNavBarProps {
   className?: string;
   logo?: React.ReactNode;
   title?: string;
   children?: React.ReactNode;
   height?: number;
-  profileMenuItems?: React.ReactNode[];
+  profileMenuItems?: React.ReactNode;
 }
 
 /**
@@ -52,14 +51,14 @@ export interface NavBarProps {
  * @param props.profileMenuItems - the menu to show when user clicks on the profile icon
  *
  */
-const NavBar = ({
+const DashboardNavBar = ({
   logo,
   title,
   children,
   className,
   height,
   profileMenuItems,
-}: NavBarProps) => {
+}: DashboardNavBarProps) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
@@ -74,7 +73,7 @@ const NavBar = ({
   };
 
   return (
-    <NavBarContainer className={className}>
+    <DashboardNavBarContainer className={className}>
       <LogoContainer>
         {logo}
         {title && <h3>{title}</h3>}
@@ -101,8 +100,8 @@ const NavBar = ({
           {profileMenuItems}
         </Menu>
       </ProfileContainer>
-    </NavBarContainer>
+    </DashboardNavBarContainer>
   );
 };
 
-export default NavBar;
+export default DashboardNavBar;

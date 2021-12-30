@@ -15,8 +15,8 @@ import {
 } from '@mui/material';
 
 import { FirebaseError } from '@firebase/util';
-import { Alert } from '@/components';
-import { Logger, MicrosoftAuthProvider } from '@/utils';
+import { Alert } from '../../components';
+import { Logger, MicrosoftAuthProvider } from '../../utils';
 import { UserFormButton, UserFormContainer } from './styled';
 
 export interface LoginFormProps {

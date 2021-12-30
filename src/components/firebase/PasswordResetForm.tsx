@@ -6,7 +6,7 @@ import {
   getAuth,
   verifyPasswordResetCode,
 } from '@firebase/auth';
-import { Alert } from '@/components';
+import { Alert } from '../../components';
 
 export interface PasswordResetFormProps {
   className?: string;

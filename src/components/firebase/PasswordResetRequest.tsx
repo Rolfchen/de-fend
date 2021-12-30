@@ -9,7 +9,7 @@ import {
   AlertColor,
 } from '@mui/material';
 import { FirebaseError } from '@firebase/util';
-import { Alert } from '@/components';
+import { Alert } from '../../components';
 import { UserFormButton, UserFormContainer } from './styled';
 
 export interface PasswordResetRequestProps {

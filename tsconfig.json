@@ -13,27 +13,7 @@
     "declaration": true,
     "declarationMap": true,
     "allowSyntheticDefaultImports": true,
-    "composite": true,
-    "paths": {
-      "@/components/*": ["./src/components/*"],
-      "@/domain/*": ["./src/domain/*"],
-      "@/context/*": ["./src/context/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/styles/*": ["./src/styles/*"],
-      "@/data/*": ["./src/data/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/types/*": ["./src/types/*"],
-      "@/testUtils/*": ["./src/__testUtils/*"],
-      "@/components": ["./src/components"],
-      "@/domain": ["./src/domain"],
-      "@/context": ["./src/context"],
-      "@/hooks": ["./src/hooks"],
-      "@/styles": ["./src/styles"],
-      "@/data": ["./src/data"],
-      "@/utils": ["./src/utils"],
-      "@/types": ["./src/types"],
-      "@/testUtils": ["./src/__testUtils"]
-    }
+    "composite": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

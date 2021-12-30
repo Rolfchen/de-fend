@@ -1,6 +1,6 @@
 import { Dialog } from '@mui/material';
 import LoginForm from '../Firebase/LoginForm';
-import { useModalState, useModalStateUpdater } from '@/context/AppModal';
+import { useModalState, useModalStateUpdater } from '../../context/AppModal';
 
 interface FirebaseLoginModalProps {
   onClose?: () => void;
