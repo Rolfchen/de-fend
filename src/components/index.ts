@@ -1,1 +1,3 @@
-export { default as TestTitle } from './TestTitle';
+export * from './Buttons';
+// export { default as ProtectedContentWrapper } from './ProtectedContentWrapper';
+export { default as Alert } from './Alert';

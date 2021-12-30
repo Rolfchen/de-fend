@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git@github.com:Rolfchen/de-fend.git",
-  "author": "Rolf Chen <rolf+next@rolfchen.com>",
+  "author": "Rolf Chen <rolf@rolfchen.com>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.0.5",
     "@mui/material": "^5.0.6",
     "esbuild": "^0.14.9",
+    "firebase": "^9.6.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
