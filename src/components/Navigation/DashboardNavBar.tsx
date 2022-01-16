@@ -4,6 +4,10 @@ import { useState } from 'react';
 import { useUserState } from '../../context/UserContext';
 import { useRouter } from 'next/router';
 
+interface NavBarContainerStyleProps {
+  height?: string;
+}
+
 const DashboardNavBarContainer = styled.nav`
   display: grid;
   position: fixed;
@@ -13,6 +17,7 @@ const DashboardNavBarContainer = styled.nav`
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
   background-color: ${({ theme }) => theme.palette.background.default};
   padding: ${({ theme }) => theme.spacing(1, 2)};
+  height: ${({ height }: NavBarContainerStyleProps) => height || `64px`};
 `;
 
 const LogoContainer = styled.div``;
@@ -37,7 +42,7 @@ export interface DashboardNavBarProps {
   logo?: React.ReactNode;
   title?: string;
   children?: React.ReactNode;
-  height?: number;
+  height?: string;
   profileMenuItems?: React.ReactNode;
 }
 
@@ -73,7 +78,7 @@ const DashboardNavBar = ({
   };
 
   return (
-    <DashboardNavBarContainer className={className}>
+    <DashboardNavBarContainer height={height} className={className}>
       <LogoContainer>
         {logo}
         {title && <h3>{title}</h3>}
