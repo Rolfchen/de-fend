@@ -1,5 +1,5 @@
 import { Dialog } from '@mui/material';
-import LoginForm from '../Firebase/LoginForm';
+import LoginForm from '../FirebaseAuth/LoginForm';
 import { useModalState, useModalStateUpdater } from '../../context/AppModal';
 
 interface FirebaseLoginModalProps {
