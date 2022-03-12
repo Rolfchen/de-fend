@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
-import { Avatar, Menu } from '@mui/material';
+import { Avatar, Menu, alpha } from '@mui/material';
 import { useState } from 'react';
 import { useUserState } from '../../context/UserContext';
-import { useRouter } from 'next/router';
 
 interface NavBarContainerStyleProps {
   height?: string;
@@ -12,26 +11,42 @@ const DashboardNavBarContainer = styled.nav`
   display: grid;
   position: fixed;
   width: 100%;
+  align-items: center;
   gap: ${({ theme }) => theme.spacing(2)};
   grid-template-columns: auto 1fr auto;
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
   background-color: ${({ theme }) => theme.palette.background.default};
   padding: ${({ theme }) => theme.spacing(1, 2)};
-  height: ${({ height }: NavBarContainerStyleProps) => height || `64px`};
+  min-height: ${({ height }: NavBarContainerStyleProps) => height || `64px`};
 `;
 
-const LogoContainer = styled.div``;
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  h3 {
+    margin: 0;
+  }
+`;
 
 const MenuContainer = styled.div``;
 
-const ProfileContainer = styled.div`
+const ProfileMenuContainer = styled.div``;
+
+const ProfileButton = styled.button`
   display: flex;
   align-items: center;
-  & button {
-    border: none;
+  border: 1px solid ${({ theme }) => theme.palette.grey[300]};
+  background-color: transparent;
+  gap: ${({ theme }) => theme.spacing(1)};
+  border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+  .profile-avatar {
     background-color: ${({ theme }) => theme.palette.primary.main};
-    &:hover {
-      cursor: pointer;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.palette.action.hover};
+    border-color: ${({ theme }) => theme.palette.primary.light};
+    .profile-avatar {
       background-color: ${({ theme }) => theme.palette.primary.light};
     }
   }
@@ -66,7 +81,6 @@ const DashboardNavBar = ({
 }: DashboardNavBarProps) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
-  const router = useRouter();
   const { user } = useUserState();
 
   const handleProfileClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -77,6 +91,8 @@ const DashboardNavBar = ({
     setAnchorEl(null);
   };
 
+  console.log(user);
+
   return (
     <DashboardNavBarContainer height={height} className={className}>
       <LogoContainer>
@@ -84,27 +100,33 @@ const DashboardNavBar = ({
         {title && <h3>{title}</h3>}
       </LogoContainer>
       <MenuContainer>{children}</MenuContainer>
-      <ProfileContainer>
-        <Avatar
-          component="button"
-          src={user?.photoURL || undefined}
-          onClick={handleProfileClick}
-          aria-controls="profile-menu"
-        >
-          {user?.displayName?.charAt(0)}
-        </Avatar>
+      <ProfileMenuContainer>
+        <ProfileButton onClick={handleProfileClick}>
+          <div>{user?.displayName || 'Anonymous'}</div>
+          <Avatar
+            className="profile-avatar"
+            src={user?.photoURL || undefined}
+            aria-controls="profile-menu"
+          >
+            {user?.displayName?.charAt(0)}
+          </Avatar>
+        </ProfileButton>
         <Menu
           id="profile-menu"
           open={open}
           anchorEl={anchorEl}
           onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
           MenuListProps={{
             'aria-label': 'Profile Menu',
           }}
         >
           {profileMenuItems}
         </Menu>
-      </ProfileContainer>
+      </ProfileMenuContainer>
     </DashboardNavBarContainer>
   );
 };
